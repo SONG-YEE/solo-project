@@ -7,8 +7,6 @@
 // 4. 요청 성공시 jwt를 localstorage에 저장 후 main page 이동      //
 /////////////////////////////////////////////////////////////////////
 
-let url = "http://127.0.0.1:5502";
-
 const btnSignIn = document.querySelector("#signin");
 
 // 1번
