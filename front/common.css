@@ -1,0 +1,171 @@
+@font-face {
+    font-family: 'MonoplexKR-Italic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_Monoplex-kr@1.0/MonoplexKR-Italic.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+html {
+    font-size: 10;
+    font-family: 'MonoplexKR-Italic';
+    
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2rem;
+    
+}
+
+.nav-container {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.nav-title {
+    font-size: 1.8rem;
+    
+}
+
+.nav-contact {
+    font-size: 1.4rem;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    
+}
+
+.category-title {
+    font-size: 1.5rem;
+
+}
+
+.category-item {
+    width: 20%;
+    height: 3.8rem;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1.1rem;
+    
+}
+
+.category-item:hover {
+    color: bisque;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+.inner {
+    padding: 0 1.5rem;
+
+}
+
+/* 반응형 웹 만들기 위한 미디어 쿼리 */
+@media all and (min-width: 1024px) {
+    .inner {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+    
+}
+
+
+/* 지도 css */
+body {
+    height: 100vh;
+
+}
+
+nav {
+    height: 60px;
+
+}
+
+main {
+    padding-top: 1.5rem;
+    height: calc(100% - 60px);  /* 전체 높이에서 nav의 높이만큼 빼줌 */
+    display: flex;
+    flex-direction: column;
+}
+
+#map {
+    flex-grow: 1;
+    width: 100%;
+    /* width: 400%; 내가 해보려고 했던 거 */
+    height: 100%;
+
+}
+
+/* 회원/비회원 헤더 설정 */
+.dropdown {
+    position: relative;
+
+}
+
+.dropdown-button {
+    font-family: inherit;
+    font-size: 2rem;
+    border: none;
+    background: none;
+
+}
+
+/* 로그인 버튼 기본값 : 숨김 처리 */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+
+}
+
+.dropdown-content button {
+    display: block;
+    font-size: 1.4rem;
+    font-family: inherit;
+    width: 100%;
+    border: none;
+
+}
+
+.dropdown-content button:hover {
+    color: white;
+    background-color: #606060;
+
+}
+
+/* h오버시 로그아웃 버튼 보이도록 설정 */
+.dropdown:hover .dropdown-content {
+    display: block;
+
+}
+
+.hidden {
+    display: none;
+
+}
+
+.sign-container {
+    font-size: 2rem;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    
+}
