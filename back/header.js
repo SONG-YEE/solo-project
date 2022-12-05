@@ -9,7 +9,7 @@
 //////////////////////////////////////////////////////////////////
 
 // 1번
-const jwt = localStorage.getItem("x-access.token");
+const jwt = localStorage.getItem("x-access-token");
 setHeader(jwt);
 
 // 로그아웃 버튼 이벤트 연결
@@ -44,18 +44,18 @@ async function setHeader(jwt) {
     
     
     // 4번
-    const userIdx  = jwtReturn.data.userIdx;
-    const nickname = jwtReturn.data.nickname;
+    const userIdx  = jwtReturn.data.result.userIdx;
+    const nickname = jwtReturn.data.result.nickname;
     
     // .usigned에 .hidden 추가, .signed에 .hidden 삭제
     // .nickname의 innerText로 nickname 설정
-    const divUnsigned = document.querySelector(".unsigned");
-    const divSigned   = document.querySelector(".signed");
-    const spanNicname = document.querySelector(".nickname");
+    const divUnsigned  = document.querySelector(".unsigned");
+    const divSigned    = document.querySelector(".signed");
+    const spanNickname = document.querySelector(".nickname");
     
     divUnsigned.classList.add("hidden");
-    divSigned.classList.add("hidden");
-    spanNicname.innerText = nickname;
+    divSigned.classList.remove("hidden");
+    spanNickname.innerText = nickname;
 
     
     return true;

@@ -28,14 +28,15 @@ async function getDataSet(category) {
 	let qs = category;
 	if(!qs) {
 		qs = "";
+
 	}
 
 	const dataSet = await axios({
-		method 	: "get",
-	//	url	   	:  url + `/restaurants?category=${qs}`,
-	    url	   	: `http://localhost:3000/restaurants?category=${qs}`,
-		headers : {},
-		data	: {}
+		method 	: "get",									// http method
+		url	   	:  url + `/restaurants?category=${qs}`,
+	//  url	   	: `http://localhost:3000/restaurants?category=${qs}`,
+		headers : {},										// packet header
+		data	: {}										// packet body
 
 	});
 	
@@ -123,8 +124,8 @@ function getContent(data) {
 
 async function setMap(dataSet) {
 
-    markerArray = [];
-    infowindow  = [];
+    markerArray 	 = [];
+    infowindowArray  = [];
 
 	for(let i = 0; i < dataSet.length; i++) {
 		
@@ -217,7 +218,7 @@ categoryList.addEventListener("click", categoryHandler);
 async function categoryHandler(event) {
 
 	const categoryId = event.target.id;
-	const category = categoryMap[categoryId];
+	const category 	 = categoryMap[categoryId];
 
 	try {
 		// 데이터 분류

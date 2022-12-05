@@ -10,7 +10,7 @@
 const btnSignIn = document.querySelector("#signin");
 
 // 1번
-btnSignIn.addEventListener("click", signin);
+btnSignIn.addEventListener("click", signIn);
 
 async function signIn(event) {
     const userID   = document.querySelector("#userID").value;
@@ -48,6 +48,6 @@ async function signIn(event) {
     localStorage.setItem("x-access-token", jwt);
     alert(signInReturn.data.message);
 
-    return location.replace("./index.html");
+    return location.replace("/front/index.html");
 
 }

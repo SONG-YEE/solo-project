@@ -64,6 +64,6 @@ async function signup(event) {
     localStorage.setItem("x-access-token", jwt);
     alert(signUpReturn.data.message);
 
-    return location.replace("./index.html");
+    return location.replace("/front/index.html");
 
 }
