@@ -88,7 +88,7 @@ exports.createJwt = async function(req, res) {
 exports.createUsers = async function(req, res) {
   const {userID, password, nickname} = req.body;
 
-  // 1. 유저 데이터 검증
+  // 유저 데이터 검증
   const userIDRegExp    = /^[a-z]+[a-z0-9]{5,19}$/g;                    // 아이디 정규식 영문자로 시작하는 영문 또는 숫자 6~20
   const passwordRegExp  = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;  // 비밀번호 정규식 8~16 문자, 숫자 조합
   const nicknameRegExp  = /^[가-힣|a-z|A-Z|0-9|]{2,10}$/;               // 닉네임 정규식 2~10 한글, 숫자 또는 영문
@@ -126,6 +126,33 @@ exports.createUsers = async function(req, res) {
   try {
     const connection = await pool.getConnection(async (conn) => conn);
     try {
+
+      // DB 회원 검증(중복 아이디 확인)
+      const {userID} = req.body;
+      const [chkID] = await indexDao.checkID(connection, userID);
+      if(chkID.includes(userID)) {
+        return res.send({
+          isSuccess : false,
+          code      : 400, // 요청 실패시 400번대 코드
+          message   : "이미 존재하는 아이디입니다.",
+
+        });
+
+      }
+
+
+      // DB 회원 검증(중복 닉네임 확인)
+      const {nickname} = req.body;
+      const [chkNick] = await indexDao.checkNick(connection, nickname);
+      if(chkNick.includes(nickname)) {
+        return res.send({
+          isSuccess : false,
+          code      : 400, // 요청 실패시 400번대 코드
+          message   : "이미 존재하는 닉네임입니다.",
+
+        });
+
+      }
 
       // DB 입력
       const [rows] = await indexDao.insertUsers(

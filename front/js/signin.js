@@ -3,6 +3,7 @@
 /////////////////////////////////////////////////////////////////////
 // 1. #signin 클릭                                                 //
 // 2. userID, #password 값 확인 (두 값이 입력되지 않았으면 return) //
+// 3. 로그인 API 요청                                              //
 // 3. 요청 실패시 alert message                                    //
 // 4. 요청 성공시 jwt를 localstorage에 저장 후 main page 이동      //
 /////////////////////////////////////////////////////////////////////
@@ -38,7 +39,7 @@ async function signIn(event) {
     const isValidSignIn = signInReturn.data.code == 200;
 
     if(!isValidSignIn) {
-        return alert("요청이 처리되지 않았습니다.");
+        return alert("존재하지 않는 회원입니다.");
 
     }
 
