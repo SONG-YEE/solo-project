@@ -48,6 +48,6 @@ async function signIn(event) {
     localStorage.setItem("x-access-token", jwt);
     alert(signInReturn.data.message);
 
-    return location.replace("/front/index.html");
+    return location.replace("./index.html");
 
 }
