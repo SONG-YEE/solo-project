@@ -22,7 +22,6 @@ html {
 a {
     text-decoration: none;
     color: inherit;
-    /*font-size: 1.2rem; 확인할것*/
     
 }
 
@@ -55,7 +54,7 @@ a {
 }
 
 .category-item {
-    width: 25%;
+    width: 20%;
     height: 5rem;
     background: none;
     border: none;
