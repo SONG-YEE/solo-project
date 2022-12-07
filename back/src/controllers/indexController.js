@@ -63,7 +63,7 @@ exports.createJwt = async function(req, res) {
         result    : {jwt : token},
         isSuccess : true,
         code      : 200,
-        message   : "로그인 성공"
+        message   : "로그인 성공!"
 
       });
       
@@ -128,7 +128,7 @@ exports.createUsers = async function(req, res) {
     try {
 
       // DB 회원 검증(중복 아이디 확인)
-      const [chkID] = await indexDao.checkID(connection, userID);
+      const [chkID] = await indexDao.checkID(connection, userID, password, nickname);
       if(chkID.includes(userID)) {
         return res.send({
           isSuccess : false,
@@ -141,8 +141,8 @@ exports.createUsers = async function(req, res) {
 
 
       // DB 회원 검증(중복 닉네임 확인)
-      const [chkNick] = await indexDao.checkNick(connection, nickname);
-      if(chkNick = nickname) {
+      const [chkNick] = await indexDao.checkNick(connection, userID, password, nickname);
+      if(chkNick.includes(nickname)) {
         return res.send({
           isSuccess : false,
           code      : 400, // 요청 실패시 400번대 코드
