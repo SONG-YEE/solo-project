@@ -18,9 +18,9 @@ exports.checkID = async function (connection, userID) {
   const Query = `SELECT userID FROM Users WHERE userID = ? AND status = 'A';`;
   const Params = [userID];
 
-  const rows = await connection.query(Query, Params);
+  const chkID = await connection.query(Query, Params);
 
-  return rows;
+  return chkID;
 
 };
 
@@ -30,9 +30,9 @@ exports.checkNick = async function (connection, nickname) {
   const Query = `SELECT nickname FROM Users WHERE nickname = ? AND status = 'A';`;
   const Params = [nickname];
 
-  const rows = await connection.query(Query, Params);
+  const chkNick = await connection.query(Query, Params);
 
-  return rows;
+  return chkNick;
   
 };
 

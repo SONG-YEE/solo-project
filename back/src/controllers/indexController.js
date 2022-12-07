@@ -129,7 +129,7 @@ exports.createUsers = async function(req, res) {
 
       // DB 회원 검증(중복 아이디 확인)
       const [chkID] = await indexDao.checkID(connection, userID);
-      if(chkID = userID) {
+      if(chkID.includes(userID)) {
         return res.send({
           isSuccess : false,
           code      : 400, // 요청 실패시 400번대 코드
