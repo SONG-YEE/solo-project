@@ -1,6 +1,6 @@
 /* 인포윈도우 설정 */
 .infowindow {
-    width: 22rem;
+    width: 25rem;
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
@@ -19,17 +19,17 @@
 }
 
 .infowindow-title {
-    font-size: 1.3rem;
+    font-size: 2rem;
 
 }
 
 .infowindow-address {
-    font-size: 1rem;
+    font-size: 1.6rem;
 
 }
 
 .infowindow-btn {
-    font-size: 1rem;
+    font-size: 1.6rem;
     color: blue;
     
 }
