@@ -107,7 +107,6 @@ main {
 #map {
     flex-grow: 1;
     width: 100%;
-    /* width: 400%; 내가 해보려고 했던 거 */
     height: 100%;
 
 }
