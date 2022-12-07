@@ -128,7 +128,8 @@ exports.createUsers = async function(req, res) {
     try {
 
       // DB 회원 검증(중복 아이디 확인)
-      const [chkID] = await indexDao.checkID(connection, userID, password, nickname);
+      const {userID} = req.body;
+      const [chkID] = await indexDao.checkID(connection, userID);
       if(chkID.includes(userID)) {
         return res.send({
           isSuccess : false,
@@ -141,7 +142,8 @@ exports.createUsers = async function(req, res) {
 
 
       // DB 회원 검증(중복 닉네임 확인)
-      const [chkNick] = await indexDao.checkNick(connection, userID, password, nickname);
+      const {nickname} = req.body;
+      const [chkNick] = await indexDao.checkNick(connection, nickname);
       if(chkNick.includes(nickname)) {
         return res.send({
           isSuccess : false,

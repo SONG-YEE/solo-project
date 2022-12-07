@@ -14,9 +14,9 @@ exports.isValidUsers = async function(connection, userID, password) {
 
 
 // DB 회원 검증(중복 아이디 확인)
-exports.checkID = async function (connection, userID, password, nickname) {
-  const Query = `SELECT userID FROM Users WHERE userID = ? AND status = 'A' OR password = ? OR nickname = ?;`;
-  const Params = [userID, password, nickname];
+exports.checkID = async function (connection, userID) {
+  const Query = `SELECT userID FROM Users WHERE userID = ? AND status = 'A';`;
+  const Params = [userID];
 
   const rows = await connection.query(Query, Params);
 
@@ -26,7 +26,7 @@ exports.checkID = async function (connection, userID, password, nickname) {
 
 
 // DB 회원 검증(중복 닉네임 확인)
-exports.checkNick = async function (connection, userID, password, nickname) {
+exports.checkNick = async function (connection, nickname) {
   const Query = `SELECT nickname FROM Users WHERE nickname = ? AND status = 'A';`;
   const Params = [nickname];
 
