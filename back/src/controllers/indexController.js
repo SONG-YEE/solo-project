@@ -127,6 +127,32 @@ exports.createUsers = async function(req, res) {
     const connection = await pool.getConnection(async (conn) => conn);
     try {
 
+      // DB 회원 검증(중복 아이디 확인)
+      const ccID = req.body.userID;
+      const [chkID] = await indexDao.checkID(connection, userID);
+      if(chkID.includes(ccID)) {
+        return res.send({
+          isSuccess : false,
+          code      : 400, // 요청 실패시 400번대 코드
+          message   : "이미 존재하는 아이디입니다.",
+
+        });
+
+      }
+
+      // DB 회원 검증(중복 닉네임 확인)
+      const ccNn = req.body.nickname;
+      const [chkNick] = await indexDao.checkNick(connection, nickname);
+      if(chkNick.includes(ccNn)) {
+        return res.send({
+          isSuccess : false,
+          code      : 400, // 요청 실패시 400번대 코드
+          message   : "이미 존재하는 닉네임입니다.",
+
+        });
+
+      }
+
       // DB 입력
       const [rows] = await indexDao.insertUsers(
         connection,
